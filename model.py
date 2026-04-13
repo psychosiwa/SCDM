@@ -11,7 +11,7 @@ class Alignment(nn.Module):
         super().__init__()
         # EEG: (B, 30, 4000) -> (B, 32, 256)
         # 用一维卷积配合较大的 stride 和 kernel_size，再加上 AdaptiveAvgPool1d 保证对齐到长度256，通道为32
-        self.e_conv = nn.Conv1d(in_channels=30, out_channels=32, kernel_size=15, stride=15, padding=7) 
+        self.e_conv = nn.Conv1d(in_channels=30, out_channels=32, kernel_size=15, stride=7, padding=7) 
         self.e_pool = nn.AdaptiveAvgPool1d(256)
         
         # fNIRS: (B, 36, 256) -> (B, 32, 256)
